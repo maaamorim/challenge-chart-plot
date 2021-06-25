@@ -10,16 +10,22 @@ const theme = createMuiTheme({
       'Source Sans Pro',
       'sans-serif'
     ].join(',')
+  },
+  palette: {
+    primary: {
+      main: '#007ffd'
+    }
   }
 })
 
 function App () {
   return (
     <ThemeProvider theme={theme}>
-    <div className="App">
-      <Header />
-      <Footer />
-    </div>
+      <div className="App">
+        <Header />
+        <div style={{ height: '84vh' }}/>
+        <Footer />
+      </div>
     </ThemeProvider>
   )
 }
