@@ -42,7 +42,6 @@ class TextEditor extends Component {
           }}
           value={this.state.inputText}
         />
-        <input type="button" onClick={this.printInput.bind(this)} />
       </div>
     )
   }
