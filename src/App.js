@@ -2,6 +2,7 @@ import React from 'react'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 
 import Header from './components/Header'
+import TextEditor from './components/TextEditor'
 import Footer from './components/Footer'
 
 const theme = createMuiTheme({
@@ -21,9 +22,10 @@ const theme = createMuiTheme({
 function App () {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
+      <div className='App'>
         <Header />
-        <div style={{ height: '84vh' }}/>
+        <TextEditor />
+        <div style={{ height: '44vh' }}/>
         <Footer />
       </div>
     </ThemeProvider>

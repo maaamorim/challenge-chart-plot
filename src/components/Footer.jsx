@@ -19,7 +19,7 @@ class Footer extends Component {
   render () {
     return (
       <footer style={style.footer}>
-        <Button variant="contained" color="primary" style={style.button}>GENERATE CHART</Button>
+        <Button variant='contained' color='primary' style={style.button}>GENERATE CHART</Button>
       </footer>
     )
   }
