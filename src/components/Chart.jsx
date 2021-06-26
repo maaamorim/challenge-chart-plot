@@ -3,22 +3,12 @@ import PropTypes from 'prop-types'
 
 import { Line } from 'react-chartjs-2'
 
-const data = {
-  labels: ['1', '2', '3', '4', '5', '6'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      fill: false,
-      borderColor: '#6dba52',
-      backgroundColor: '#6dba52',
-      borderWidth: 2
-    }
-  ]
-}
-
 const options = {
   maintainAspectRatio: false,
+  animations: false,
+  layout: {
+    padding: 30
+  },
   plugins: {
     legend: {
       position: 'right',
@@ -33,8 +23,8 @@ const options = {
   scales: {
     yAxes: [
       {
-        ticks: {
-          beginAtZero: true
+        gridLines: {
+          drawBorder: false
         }
       }
     ]
@@ -45,14 +35,14 @@ class Chart extends Component {
   render () {
     return (
       <div style={{ height: '44vh' }}>
-        { this.props.displayChart ? <Line data={data} options={options} redraw={false} /> : null}
+        { this.props.data ? <Line data={this.props.data} options={options} redraw={false} /> : null}
       </div>
     )
   }
 }
 
 Chart.propTypes = {
-  displayChart: PropTypes.bool
+  data: PropTypes.object
 }
 
 export default Chart

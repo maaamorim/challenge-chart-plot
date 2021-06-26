@@ -5,12 +5,14 @@ import TextEditor from '../components/TextEditor'
 import Chart from '../components/Chart'
 import Footer from '../components/Footer'
 
+import generateChartData from '../utils/generateChartData'
+
 class Index extends Component {
   constructor (props) {
     super(props)
     this.state = {
       inputText: null,
-      displayChart: false
+      chartData: null
     }
     this.getInputText = this.getInputText.bind(this)
     this.generateChart = this.generateChart.bind(this)
@@ -21,17 +23,16 @@ class Index extends Component {
   }
 
   generateChart () {
-    this.setState({ displayChart: true })
-    console.log(this.state.inputText)
+    this.setState({ chartData: generateChartData(this.state.inputText) })
   }
 
   render () {
     return (
       <div>
         <Header />
-        <TextEditor callbackTextSubmitted={this.getInputText}/>
-        <Chart displayChart={this.state.displayChart} />
-        <Footer callbackButtonClicked={this.generateChart}/>
+        <TextEditor callbackTextSubmitted={this.getInputText} />
+        <Chart data={this.state.chartData} />
+        <Footer callbackButtonClicked={this.generateChart} />
       </div>
     )
   }
