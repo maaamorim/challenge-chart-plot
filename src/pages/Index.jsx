@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 
 import Header from '../components/Header'
 import TextEditor from '../components/TextEditor'
+import Chart from '../components/Chart'
 import Footer from '../components/Footer'
 
 class Index extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      inputText: null
+      inputText: null,
+      displayChart: false
     }
     this.getInputText = this.getInputText.bind(this)
     this.generateChart = this.generateChart.bind(this)
@@ -19,6 +21,7 @@ class Index extends Component {
   }
 
   generateChart () {
+    this.setState({ displayChart: true })
     console.log(this.state.inputText)
   }
 
@@ -27,7 +30,7 @@ class Index extends Component {
       <div>
         <Header />
         <TextEditor callbackTextSubmitted={this.getInputText}/>
-        <div style={{ height: '44vh' }} />
+        <Chart displayChart={this.state.displayChart} />
         <Footer callbackButtonClicked={this.generateChart}/>
       </div>
     )

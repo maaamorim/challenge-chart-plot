@@ -21,11 +21,12 @@ class TextEditor extends Component {
     this.state = {
       inputText: sampleData
     }
+    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange (event) {
-    this.setState({ inputText: event.target.value })
+  handleChange (val) {
+    this.setState({ inputText: val })
   }
 
   handleSubmit () {
@@ -39,12 +40,16 @@ class TextEditor extends Component {
           mode="java"
           theme="solarized_dark"
           name="text_editor_Vd2wXaiLEnFRFcR"
+          focus={true}
           height={style.height}
           width={style.width}
           fontSize={18}
           showPrintMargin={false}
           setOptions={{
             fontFamily: 'Source Code Pro'
+          }}
+          style={{
+            backgroundColor: '#2e3440'
           }}
           value={this.state.inputText}
           onChange={this.handleChange}

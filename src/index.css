@@ -3,3 +3,17 @@ body {
   margin: 0px 0px;
   padding: 0px 0px;
 }
+
+.ace_gutter > .ace_layer {
+  background-color: #2e3440 !important;
+}
+
+.ace_constant.ace_library,
+.ace_string,
+.ace_support.ace_constant {
+  color: #14a8b7 !important;
+}
+
+.ace_constant.ace_numeric {
+  color: #9e73c6 !important;
+}
