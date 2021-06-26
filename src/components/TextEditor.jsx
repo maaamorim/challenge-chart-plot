@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import AceEditor from 'react-ace-builds'
 import 'ace-builds/src-noconflict/mode-java'
@@ -20,10 +21,15 @@ class TextEditor extends Component {
     this.state = {
       inputText: sampleData
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  printInput () {
-    console.log(this.state.inputText)
+  handleChange (event) {
+    this.setState({ inputText: event.target.value })
+  }
+
+  handleSubmit () {
+    this.props.callbackTextSubmitted(this.state.inputText)
   }
 
   render () {
@@ -32,7 +38,7 @@ class TextEditor extends Component {
         <AceEditor
           mode="java"
           theme="solarized_dark"
-          name="UNIQUE_ID_OF_DIV"
+          name="text_editor_Vd2wXaiLEnFRFcR"
           height={style.height}
           width={style.width}
           fontSize={18}
@@ -41,10 +47,16 @@ class TextEditor extends Component {
             fontFamily: 'Source Code Pro'
           }}
           value={this.state.inputText}
+          onChange={this.handleChange}
+          onBlur={this.handleSubmit}
         />
       </div>
     )
   }
+}
+
+TextEditor.propTypes = {
+  callbackTextSubmitted: PropTypes.func
 }
 
 export default TextEditor

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
 import { Button } from '@material-ui/core'
 
 const style = {
@@ -16,13 +18,26 @@ const style = {
 }
 
 class Footer extends Component {
+  constructor (props) {
+    super(props)
+    this.handleButtonClick = this.handleButtonClick.bind(this)
+  }
+
+  handleButtonClick () {
+    this.props.callbackButtonClicked()
+  }
+
   render () {
     return (
       <footer style={style.footer}>
-        <Button variant='contained' color='primary' style={style.button}>GENERATE CHART</Button>
+        <Button variant='contained' color='primary' style={style.button} onClick={this.handleButtonClick}>GENERATE CHART</Button>
       </footer>
     )
   }
+}
+
+Footer.propTypes = {
+  callbackButtonClicked: PropTypes.func
 }
 
 export default Footer
