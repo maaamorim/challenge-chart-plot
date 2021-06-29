@@ -1,22 +1,30 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { Button } from '@material-ui/core'
+import { SCREEN_SIZE_DIVISON } from '../utils/constants'
 
 const style = {
   footer: {
     backgroundColor: '#dddee1',
-    height: '8vh',
+    height: SCREEN_SIZE_DIVISON.footer,
     display: 'flex',
     alignItems: 'center'
   },
   button: {
     color: 'white',
+    backgroundColor: '#007ffd',
+    border: 'none',
+    height: '44px',
+    width: '185px',
     fontSize: '18px',
     marginLeft: '50px'
   }
 }
 
+/**
+ * Footer component.
+ * Receives the function to call back when the button is clicked.
+ */
 class Footer extends Component {
   constructor (props) {
     super(props)
@@ -30,7 +38,7 @@ class Footer extends Component {
   render () {
     return (
       <footer style={style.footer}>
-        <Button variant='contained' color='primary' style={style.button} onClick={this.handleButtonClick}>GENERATE CHART</Button>
+        <button style={style.button} onClick={this.handleButtonClick}>GENERATE CHART</button>
       </footer>
     )
   }

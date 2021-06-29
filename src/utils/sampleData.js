@@ -1,3 +1,4 @@
+// sample data based on the screenshot provided
 export const sampleData =
 "{type: 'start', timestamp: 1519862400000, select: ['min_response_time', 'max_response_time'], group: ['os', 'browser']}\n" +
 "{type: 'span', timestamp: 1519862400000, begin: 1519862400000, end: 1519862460000}\n" +

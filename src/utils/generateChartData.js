@@ -2,6 +2,11 @@ import rjson from 'relaxed-json'
 
 import { COLORS } from './constants'
 
+/**
+ * Converts the text editor input to data usable by the chart.
+ * @param {string} inputText Raw input string from the text editor component.
+ * @returns Object ready to be consumed by the chart lib.
+ */
 export default function generateChartData (inputText) {
   // converts the input text and builds the JSON array
   const splittedText = inputText.split('\n')
@@ -13,7 +18,6 @@ export default function generateChartData (inputText) {
   // setting necessary configuration objects
   const startObject = jsonArray[0]
   const spanObject = jsonArray[1]
-  // const stopObject = jsonArray[jsonArray.length - 1]
 
   // setting time interval
   const beginTimestamp = spanObject.begin
@@ -39,6 +43,13 @@ export default function generateChartData (inputText) {
       groups.forEach(group => {
         keys.push(it[`${group}`])
       })
+      /**
+       * generates an object with the following format:
+       *  - keys: array of group values
+       *  - selector: string of the current selector
+       *  - value: number representing the current value of the selector
+       *  - timestamp: timestamp
+       */
       selectors.forEach(selector => {
         values.push({
           keys: keys,
@@ -46,6 +57,7 @@ export default function generateChartData (inputText) {
           value: it[`${selector}`],
           timestamp: it.timestamp
         })
+        // stores the timestamp to be used on the data separation and X axis labels
         if (!timestamps.includes(it.timestamp)) {
           timestamps.push(it.timestamp)
         }
@@ -53,6 +65,7 @@ export default function generateChartData (inputText) {
     }
   }
 
+  // building the X (timestamp) labels and separating values by timestamp
   const labelsX = []
   const timestampedValues = []
   timestamps.forEach(timestamp => {
@@ -60,15 +73,23 @@ export default function generateChartData (inputText) {
     timestampedValues.push(values.filter(val => val.timestamp === timestamp))
   })
 
-  // building the Y axis, with labels properly formatted and extracting values
+  // building the Y axis, with labels properly formatted and properly setting values
   const valuesY = []
   timestampedValues.forEach(tsValue => {
     tsValue.forEach(value => {
+      // runs over all keys, generating the proper text to be used as the dataset label
       let newLabel = ''
       value.keys.forEach(key => {
         newLabel += `${convertAndCapitalizeWord(key)} `
       })
       newLabel += `${convertAndCapitalizeWord(value.selector)}`
+      /**
+       * if the key isn't already processed, inserts a new object into
+       * the value list with the following format:
+       *  - key: properly typed label
+       *  - value: list of values from that label
+       * if it already is inserted, appends the value to its value list
+       */
       if (valuesY.filter(val => val.key === newLabel).length === 0) {
         valuesY.push({
           key: newLabel,
@@ -81,6 +102,7 @@ export default function generateChartData (inputText) {
     })
   })
 
+  // builds the return object with proper format
   const returnObject = {}
   returnObject.labels = labelsX
   returnObject.datasets = []
@@ -112,6 +134,11 @@ function convertAndCapitalizeWord (word) {
     .join(' ')
 }
 
+/**
+ * Converts a proper timestamp to a string on the format "hh:mm"
+ * @param {timestamp} timestamp Timestamp
+ * @returns String in the format hh:mm
+ */
 function convertTimestampToFormattedString (timestamp) {
   const date = new Date(timestamp)
   const hours = date.getHours().toString()
@@ -120,10 +147,9 @@ function convertTimestampToFormattedString (timestamp) {
 }
 
 /**
- * Generates a random dark color
- * Found at https://gist.github.com/Chak10/dc24c61c9bf2f651cb6d290eeef864c1
- * @returns String corresponding to a random hex color
- * that is naturally dark
+ * Picks a certain amount of colors randomly from the color list
+ * @param {int} count Number of colors needed
+ * @returns List of colors
  */
 function generateColor (count) {
   const colorKeys = Object.keys(COLORS)

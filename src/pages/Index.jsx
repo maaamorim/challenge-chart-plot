@@ -7,6 +7,10 @@ import Footer from '../components/Footer'
 
 import generateChartData from '../utils/generateChartData'
 
+/**
+ * Main page component.
+ * Basically incorporates all components and handles data exchange between them.
+ */
 class Index extends Component {
   constructor (props) {
     super(props)

@@ -4,6 +4,7 @@ body {
   padding: 0px 0px;
 }
 
+/* Helpers needed to color specific parts of the text editor */
 .ace_gutter > .ace_layer {
   background-color: #60656e !important;
 }

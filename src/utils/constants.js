@@ -1,7 +1,48 @@
+/**
+ * Defines how the screen height is divided between sections of the page.
+ */
+export const SCREEN_SIZE_DIVISON = {
+  header: '8vh',
+  textEditor: '40vh',
+  chart: '44vh',
+  footer: '8vh'
+}
+
+/**
+ * Defines options used to configure the chart.
+ */
+export const CHART_OPTIONS = {
+  maintainAspectRatio: false,
+  animations: false,
+  layout: {
+    padding: 30
+  },
+  plugins: {
+    legend: {
+      position: 'right',
+      align: 'start',
+      labels: {
+        font: 'Source Sans Pro',
+        usePointStyle: true,
+        boxWidth: 12
+      }
+    }
+  },
+  scales: {
+    yAxes: [
+      {
+        gridLines: {
+          drawBorder: false
+        }
+      }
+    ]
+  }
+}
+
+/**
+ * Defines a list of available colors to be picked as chart dataset colors.
+ */
 export const COLORS = {
-  aqua: '#00ffff',
-  azure: '#f0ffff',
-  beige: '#f5f5dc',
   black: '#000000',
   blue: '#0000ff',
   brown: '#a52a2a',
@@ -23,12 +64,6 @@ export const COLORS = {
   green: '#008000',
   indigo: '#4b0082',
   khaki: '#f0e68c',
-  lightblue: '#add8e6',
-  lightcyan: '#e0ffff',
-  lightgreen: '#90ee90',
-  lightgrey: '#d3d3d3',
-  lightpink: '#ffb6c1',
-  lightyellow: '#ffffe0',
   lime: '#00ff00',
   magenta: '#ff00ff',
   maroon: '#800000',
@@ -40,6 +75,5 @@ export const COLORS = {
   violet: '#800080',
   red: '#ff0000',
   silver: '#c0c0c0',
-  white: '#ffffff',
   yellow: '#ffff00'
 }

@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 
+import { SCREEN_SIZE_DIVISON } from '../utils/constants'
+
 const style = {
   mainDiv: {
     backgroundColor: '#dddee1',
-    height: '8vh',
+    height: SCREEN_SIZE_DIVISON.header,
     display: 'flex',
     alignItems: 'center'
   },
@@ -14,6 +16,10 @@ const style = {
     paddingLeft: '50px'
   }
 }
+/**
+ * Header component.
+ * Simple header with a text.
+ */
 class Header extends Component {
   render () {
     return (

@@ -5,16 +5,22 @@ import AceEditor from 'react-ace-builds'
 import 'ace-builds/src-noconflict/mode-java'
 import 'ace-builds/src-noconflict/theme-solarized_dark'
 
+import { SCREEN_SIZE_DIVISON } from '../utils/constants'
+
 import { sampleData } from '../utils/sampleData'
 
 const style = {
-  height: '40vh',
+  height: SCREEN_SIZE_DIVISON.textEditor,
   width: '100%',
   textEditor: {
     backgroundColor: 'black'
   }
 }
 
+/**
+ * Text editor component.
+ * Receives the callback to invoke when the text is submitted (on blur).
+ */
 class TextEditor extends Component {
   constructor (props) {
     super(props)
