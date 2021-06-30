@@ -23,8 +23,8 @@ const style = {
 class Header extends Component {
   render () {
     return (
-      <div style={style.mainDiv}>
-        <h2 style={style.text}>Mateus Amorim&apos;s Challenge</h2>
+      <div style={style.mainDiv} data-cy="header">
+        <h2 style={style.text} data-cy="header-text">Mateus Amorim&apos;s Challenge</h2>
       </div>
     )
   }

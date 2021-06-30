@@ -7,7 +7,7 @@ import 'ace-builds/src-noconflict/theme-solarized_dark'
 
 import { SCREEN_SIZE_DIVISON } from '../utils/constants'
 
-import { sampleData } from '../utils/sampleData'
+// import { sampleData } from '../utils/sampleData'
 
 const style = {
   height: SCREEN_SIZE_DIVISON.textEditor,
@@ -25,7 +25,7 @@ class TextEditor extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      inputText: sampleData
+      inputText: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -41,7 +41,7 @@ class TextEditor extends Component {
 
   render () {
     return (
-      <div>
+      <div data-cy="text-editor">
         <AceEditor
           mode="java"
           theme="solarized_dark"

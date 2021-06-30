@@ -14,7 +14,7 @@ class Chart extends Component {
   render () {
     return (
       <div style={{ height: SCREEN_SIZE_DIVISON.chart }}>
-        { this.props.data ? <Line data={this.props.data} options={CHART_OPTIONS} redraw={false} /> : null}
+        { this.props.data ? <Line data-cy="chart" data={this.props.data} options={CHART_OPTIONS} redraw={false} /> : null}
       </div>
     )
   }

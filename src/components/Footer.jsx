@@ -37,8 +37,8 @@ class Footer extends Component {
 
   render () {
     return (
-      <footer style={style.footer}>
-        <button style={style.button} onClick={this.handleButtonClick}>GENERATE CHART</button>
+      <footer style={style.footer} data-cy="footer">
+        <button style={style.button} data-cy="footer-btn" onClick={this.handleButtonClick}>GENERATE CHART</button>
       </footer>
     )
   }
