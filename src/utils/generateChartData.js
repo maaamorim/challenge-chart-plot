@@ -1,6 +1,6 @@
 import rjson from 'relaxed-json'
 
-import { COLORS } from './constants'
+import { COLORS, MAX_ALLOWED_VALUES } from './constants'
 
 /**
  * Converts the text editor input to data usable by the chart.
@@ -32,6 +32,18 @@ export default function generateChartData (inputText) {
   startObject.group.forEach(group => {
     groups.push(group)
   })
+
+  // check for selector and group sizes
+  if (selectors.length > MAX_ALLOWED_VALUES.selectors || groups.length > MAX_ALLOWED_VALUES.groups) {
+    window.alert('Too many selectors/groups')
+    return
+  }
+
+  // check for input sizes
+  if (jsonArray.length > MAX_ALLOWED_VALUES.inputs) {
+    window.alert('Too many inputs')
+    return
+  }
 
   // iterating over data types to generate labels and extract values
   const values = []

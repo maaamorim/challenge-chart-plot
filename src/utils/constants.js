@@ -8,6 +8,12 @@ export const SCREEN_SIZE_DIVISON = {
   footer: '8vh'
 }
 
+export const MAX_ALLOWED_VALUES = {
+  selectors: 25,
+  groups: 25,
+  inputs: 150
+}
+
 /**
  * Defines options used to configure the chart.
  */
